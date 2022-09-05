@@ -54,5 +54,10 @@ UserSchema.methods.comparePassword = function comparePassword(candidatePassword,
   })
 }
 
+UserSchema.methods.compareAnswer = function compareAnswer(candidateAnswer, cb) {
+  bcrypt.compare(candidateAnswer, this.qAnswer, (err, isMatch) => {
+    cb(err, isMatch)
+  })
+}
 
 module.exports = mongoose.model('User', UserSchema)

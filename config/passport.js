@@ -19,9 +19,17 @@ module.exports = function (passport) {
         }
         return done(null, false, { msg: 'Invalid email or password.' })
       })
+      // I can't get this portion to work. Because it doesn't work, you can get right through the security question login page without answering the question correctly.
+
+      // user.compareAnswer(qAnswer, (err, isMatch) => {
+      //   if (err) { return done(err) }
+      //   if (isMatch) {
+      //     return done(null, user)
+      //   }
+      //   return done(null, false, { msg: 'Invalid Answer.' })
+      // })
     })
   }))
-  
 
   passport.serializeUser((user, done) => {
     done(null, user.id)
